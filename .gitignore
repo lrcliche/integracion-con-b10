@@ -1,0 +1,11 @@
+# Local environment files
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Keep documented example files versioned
+!.env.example
+!**/.env.example
+!*.env.example
+!**/*.env.example

@@ -13,6 +13,16 @@ type Config struct {
 	HTTPPort            string
 	ReadTimeoutSeconds  int
 	WriteTimeoutSeconds int
+	Database            DatabaseConfig
+}
+
+type DatabaseConfig struct {
+	Host     string
+	Port     string
+	User     string
+	Password string
+	Name     string
+	SSLMode  string
 }
 
 func MustLoad() Config {
@@ -22,10 +32,27 @@ func MustLoad() Config {
 
 	return Config{
 		AppEnv:              getEnv("APP_ENV", "development"),
-		HTTPPort:            getEnv("HTTP_PORT", "8080"),
+		HTTPPort:            getEnv("APP_PORT", getEnv("HTTP_PORT", "8080")),
 		ReadTimeoutSeconds:  getEnvAsInt("READ_TIMEOUT_SECONDS", 10),
 		WriteTimeoutSeconds: getEnvAsInt("WRITE_TIMEOUT_SECONDS", 10),
+		Database: DatabaseConfig{
+			Host:     getEnv("DB_HOST", "postgres"),
+			Port:     getEnv("DB_PORT", "5432"),
+			User:     getEnv("DB_USER", "postgres"),
+			Password: getEnv("DB_PASSWORD", "postgres"),
+			Name:     getEnv("DB_NAME", "integration_store"),
+			SSLMode:  getEnv("DB_SSLMODE", "disable"),
+		},
 	}
+}
+
+func (c Config) DatabaseDSN() string {
+	return "host=" + c.Database.Host +
+		" port=" + c.Database.Port +
+		" user=" + c.Database.User +
+		" password=" + c.Database.Password +
+		" dbname=" + c.Database.Name +
+		" sslmode=" + c.Database.SSLMode
 }
 
 func getEnv(key, fallback string) string {

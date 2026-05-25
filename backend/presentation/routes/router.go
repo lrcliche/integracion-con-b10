@@ -19,6 +19,11 @@ func New(appContainer *container.Container) *gin.Engine {
 
 	productHandler := appContainer.ProductHandler()
 
+	api := engine.Group("/api")
+	{
+		api.GET("/products", productHandler.List)
+	}
+
 	v1 := engine.Group("/api/v1")
 	{
 		products := v1.Group("/products")
