@@ -140,6 +140,14 @@ Desde la raiz del proyecto:
 docker compose up --build
 ```
 
+## Instalacion local en Windows
+
+Para ejecutar el proyecto sin Docker Compose en Windows, seguir el manual:
+
+- [Installation.local.md](Installation.local.md)
+
+El manual incluye dependencias requeridas, preparacion de `.env`, PostgreSQL local o con Docker, inicio del backend Go, inicio del frontend Vite y validaciones.
+
 ## Validacion
 
 Una vez levantados los servicios, se pueden validar los siguientes recursos:
