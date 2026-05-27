@@ -167,11 +167,11 @@ Una vez levantados los servicios, se pueden validar los siguientes recursos:
 
 | Integrante | Responsabilidad |
 |---|---|
-| Integrante 1 | Backend Go y arquitectura hexagonal |
-| Integrante 2 | Base de datos PostgreSQL |
-| Integrante 3 | Frontend React/Vite |
-| Integrante 4 | Docker y Docker Compose |
-| Integrante 5 | Documentacion, pruebas y evidencias |
+| PULIDO BARRETO JEISSON DAVID| Backend Go y arquitectura hexagonal |
+| FRANYELI MENDIBLE CASTRO | Base de datos PostgreSQL |
+| DIEGO ARMANDO PREGONERO JIMÉNEZ | Frontend React/Vite |
+| LUIS RAMOS QUESADA | Docker y Docker Compose |
+| MAICOL YOJAN VEGA LISCANO  | Documentacion, pruebas y evidencias |
 
 ## Evidencias sugeridas
 
