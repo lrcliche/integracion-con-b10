@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Validando sintaxis de docker-compose.yml..."
-                    docker compose -f docker-compose.yml config
+                    docker-compose -f docker-compose.yml config
                 '''
             }
         }
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Servicios definidos en Docker Compose:"
-                    docker compose -f docker-compose.yml config --services
+                    docker-compose -f docker-compose.yml config --services
                 '''
             }
         }
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Construyendo imágenes del proyecto..."
-                    docker compose -f docker-compose.yml build
+                    docker-compose -f docker-compose.yml build
                 '''
             }
         }
