@@ -1,3 +1,6 @@
+## Prueba de Integración Continua
+
+Cambio realizado para validar la ejecución del workflow en una rama de desarrollo.
 # Proyecto de Software basado en herramientas de Integracion Continua
 
 ## DevStore CI - Tienda Online de Elementos de Desarrollo e Informatica
