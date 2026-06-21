@@ -1,0 +1,50 @@
+name: CI Integracion B10
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validar-y-construir:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Validar estructura del proyecto
+        run: |
+          test -d backend
+          test -d frontend
+          test -d database
+          test -f docker-compose.yml
+
+      - name: Verificar Docker
+        run: |
+          docker --version
+
+      - name: Verificar Docker Compose
+        run: |
+          docker compose version
+
+      - name: Validar docker-compose.yml
+        run: |
+          docker compose config
+
+      - name: Listar servicios
+        run: |
+          docker compose config --services
+
+      - name: Construir imágenes
+        run: |
+          docker compose build --no-cache
+
+      - name: Validación final
+        run: |
+          echo "Pipeline ejecutado correctamente"
