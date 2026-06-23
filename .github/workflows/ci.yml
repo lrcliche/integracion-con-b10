@@ -1,50 +1,29 @@
-name: CI Integracion B10
+name: CI - Go Unit Tests
 
 on:
   push:
     branches:
       - main
+      - master
 
   pull_request:
     branches:
       - main
+      - master
 
 jobs:
-  validar-y-construir:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Descargar código
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Validar estructura del proyecto
-        run: |
-          test -d backend
-          test -d frontend
-          test -d database
-          test -f docker-compose.yml
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
 
-      - name: Verificar Docker
-        run: |
-          docker --version
-
-      - name: Verificar Docker Compose
-        run: |
-          docker compose version
-
-      - name: Validar docker-compose.yml
-        run: |
-          docker compose config
-
-      - name: Listar servicios
-        run: |
-          docker compose config --services
-
-      - name: Construir imágenes
-        run: |
-          docker compose build --no-cache
-
-      - name: Validación final
-        run: |
-          echo "Pipeline ejecutado correctamente"
+      - name: Run tests
+        working-directory: backend
+        run: go test -v ./...
